@@ -11,7 +11,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t vanamsanjana9/sample:kubeimage1 .'
+                bat 'docker build -t uppusruthi6250/sample:kubeimage1 .'
             }
         }
 
@@ -24,14 +24,14 @@ pipeline {
                         passwordVariable: 'DOCKER_PASS'
                     )
                 ]) {
-                    bat 'docker login -u %DOCKER_USER% --password-stdin'
+                    bat 'echo %DOCKER_PASS%| docker login -u %DOCKER_USER% --password-stdin'
                 }
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                bat 'docker push vanamsanjana9/sample:kubeimage1'
+                bat 'docker push uppusruthi6250/sample:kubeimage1'
             }
         }
 
